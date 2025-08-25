@@ -1,5 +1,5 @@
 from sklearn.datasets import fetch_20newsgroups
-
+import random
 
 interesting_categories = ['alt.atheism',
                                 'comp.graphics',
@@ -25,3 +25,7 @@ not_interesting_categories = ['rec.sport.hockey',
 
 newsgroups_interesting = fetch_20newsgroups(subset='all', categories=interesting_categories)
 newsgroups_not_interesting = fetch_20newsgroups(subset='all', categories=not_interesting_categories)
+
+interesting_indices = random.sample(range(len(newsgroups_interesting.data)), 10)
+not_interesting_indices = random.sample(range(len(newsgroups_not_interesting.data)), 10)
+

@@ -5,6 +5,9 @@ class Publisher:
     def __init__(self):
         self.event1={"App":"Producer 1"}
         self.event2={"App": "Producer 2"}
+        self.topic1="interesting"
+        self.topic2="not_interesting"
+
 
     def get_producer_config(self):
         producer = KafkaProducer(bootstrap_servers=['localhost:9092'],
@@ -13,7 +16,7 @@ class Publisher:
         print(producer.config)
         return producer
 
-    def publish_message1(self,producer,topic,message):
+    def publish_message(self,producer,topic,message):
         """
         This function will publish message to the topic which is received as a parameter
         :param producer: producer object to publish the message to Kafka servers
@@ -23,15 +26,7 @@ class Publisher:
         """
         producer.send(topic, message)
 
-        def publish_message2(self, producer, topic, message):
-            """
-            This function will publish message to the topic which is received as a parameter
-            :param producer: producer object to publish the message to Kafka servers
-            :param topic: The topic to which the message will be published
-            :param message: The event message
-            :return: None
-            """
-            producer.send(topic, message)
+
 
 
 
