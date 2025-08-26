@@ -1,3 +1,4 @@
-kafka
 fastapi
 uvicorn
+kafka-python
+scikit-learn
