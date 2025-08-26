@@ -3,18 +3,22 @@ import os
 from datetime import datetime
 class DataLoader:
     def __init__(self):
+        # self.myclient = pymongo.MongoClient("mongodb://127.0.0.1:27017/")
+        # self.mydb = self.myclient["kafka_db"]
+        # self.mycol = self.mydb["messages"]
 
         self.MONGO_USER = os.getenv("MONGO_USER", "root")
         self.MONGO_PASS = os.getenv("MONGO_PASS", "example")
-        self.MONGO_HOST = os.getenv("MONGO_HOST", "mongo")
+        self.MONGO_HOST = os.getenv("MONGO_HOST", "127.0.0.1")
         self.MONGO_PORT = os.getenv("MONGO_PORT", "27017")
         self.MONGO_DB = os.getenv("MONGO_DB", "kafka_db")
 
-        self.url = f"mongodb://{self.MONGO_USER}:{self.MONGO_PASS}@{self.MONGO_HOST}:{self.MONGO_PORT}/{self.MONGO_DB}"
+        self.url = f"mongodb://{self.MONGO_HOST}:{self.MONGO_PORT}/{self.MONGO_DB}"
 
         self.myclient = pymongo.MongoClient(self.url)
         self.mydb = self.myclient[self.MONGO_DB]
         self.mycol = self.mydb["messages"]
+
 
 
 
